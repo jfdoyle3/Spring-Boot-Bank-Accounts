@@ -1,7 +1,14 @@
 package com.jfdeveloper.springbootbank.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
 public abstract class Account {
 
+    @Id @GeneratedValue
+    private Long accountId;
     private String name;
 
     private String accountNumber;

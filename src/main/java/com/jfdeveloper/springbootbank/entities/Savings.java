@@ -1,7 +1,9 @@
 package com.jfdeveloper.springbootbank.entities;
 
 import com.jfdeveloper.springbootbank.entities.Account;
+import jakarta.persistence.Entity;
 
+@Entity
 public class Savings extends Account {
 
 
