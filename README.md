@@ -1,2 +1,8 @@
-# startRepo
-Repo that has my current .gitignore 2/12/2022
+# SpringBoot Bank
+
+A Bank Bank End API that Create Accounts and Does Transaction with accounts.
+
+---
+
+This App is using Hibernate Inheritance with Entity classes and MySQL database to store data.
+
