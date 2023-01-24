@@ -3,7 +3,7 @@ package com.jfdeveloper.springbootbank.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
 
-@MappedSuperclass
+@Entity
 public class Checking extends Account{
 
     private static double FEE=2.5;

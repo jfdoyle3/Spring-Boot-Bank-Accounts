@@ -1,9 +1,14 @@
 package com.jfdeveloper.springbootbank.controllers;
 
+import com.jfdeveloper.springbootbank.entities.Account;
 import com.jfdeveloper.springbootbank.entities.Checking;
+import com.jfdeveloper.springbootbank.repositories.AccountRepository;
 import com.jfdeveloper.springbootbank.repositories.CheckingRepository;
 import org.aspectj.apache.bcel.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,13 +20,27 @@ import java.util.Scanner;
 public class AccountController {
 
     @Autowired
-    private CheckingRepository repository;
+    private AccountRepository accountRepository;
+    @Autowired
+    private CheckingRepository checkingRepository;
 
     @GetMapping
-    public @ResponseBody List<Checking> getAccount() {
-        return repository.findAll();
+    public @ResponseBody List<Account> getAccount() {
+        return accountRepository.findAll();
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<Checking> checkingAccount(){
+
+       Account newChecking = new Checking("Jim","123456",2);
+       accountRepository.save(newChecking);
+       return new ResponseEntity<>(HttpStatus.CREATED);
+
+    }
+
+   // Generate Account Numbers
+   // int accountNumberChecking=Math.abs((1 + randNumber.nextInt(2)) * (int)Math.pow(10,9) + randNumber.nextInt((int)Math.pow(10,9)));
+   // int accountNumberSavings=Math.abs(accountNumberChecking+((1 + randNumber.nextInt(2)) * (int)Math.pow(10,5) + randNumber.nextInt((int)Math.pow(10,5))));
 
     // ex of Post need to create a Checking and Savings accounts
 //    @PostMapping("/rate/{trackerId}/{cId}")
