@@ -2,9 +2,11 @@ package com.jfdeveloper.springbootbank.controllers;
 
 import com.jfdeveloper.springbootbank.entities.Account;
 import com.jfdeveloper.springbootbank.entities.Checking;
+import com.jfdeveloper.springbootbank.entities.Savings;
 import com.jfdeveloper.springbootbank.repositories.AccountRepository;
 import com.jfdeveloper.springbootbank.repositories.CheckingRepository;
 import org.aspectj.apache.bcel.Repository;
+import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -33,7 +35,11 @@ public class AccountController {
     public ResponseEntity<Checking> checkingAccount(){
 
        Account newChecking = new Checking("Jim","123456",2);
+       Account newSavings=new Savings("Jim","654321",1);
+       Checking checking= new Checking("cJim","234561",2);
        accountRepository.save(newChecking);
+       accountRepository.save(newSavings);
+       checkingRepository.save(checking);
        return new ResponseEntity<>(HttpStatus.CREATED);
 
     }
