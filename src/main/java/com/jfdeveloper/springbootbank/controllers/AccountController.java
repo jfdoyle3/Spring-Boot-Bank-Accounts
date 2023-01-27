@@ -26,7 +26,7 @@ public class AccountController {
     @Autowired
     private CheckingRepository checkingRepository;
 
-    @GetMapping
+    @GetMapping("/showAccounts")
     public @ResponseBody List<Account> getAccount() {
         return accountRepository.findAll();
     }
