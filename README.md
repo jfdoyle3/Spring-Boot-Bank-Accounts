@@ -11,7 +11,7 @@ https://docs.google.com/spreadsheets/d/1CHANcQdrlTSybI0oWXQ_a7vlf00wGf9mp6EWyuEZ
 
 Trello Board: https://trello.com/b/hkrepFSr
 
-Mirro: 
+Miro: 
 
 DrawIO: https://github.com/jfdoyle3/springboot-bank/blob/main/Untitled%20Diagram.drawio
 
