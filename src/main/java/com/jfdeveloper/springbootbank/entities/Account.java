@@ -5,7 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-
 public abstract class Account {
 
     @Id @GeneratedValue

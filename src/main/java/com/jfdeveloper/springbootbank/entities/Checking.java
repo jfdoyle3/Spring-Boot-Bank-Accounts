@@ -6,13 +6,13 @@ import jakarta.persistence.MappedSuperclass;
 @Entity
 public class Checking extends Account{
 
-    private static double FEE=2.5;
 
 
 
-    public Checking(String name, String  accountNumber,double fee) {
+
+    public Checking(String name, String  accountNumber) {
         super(name,accountNumber);
-        FEE=fee;
+
     }
 
     @Override
@@ -20,8 +20,6 @@ public class Checking extends Account{
         if(amount>0){
             balance+=amount;
             System.out.printf("Amount %.2f deposited%n",amount);
-            balance-=FEE;
-            System.out.printf("Fee %.2f Applied%n",FEE);
             System.out.printf("Current Balance is: %.2f%n",balance);
         }
         else {
@@ -32,11 +30,9 @@ public class Checking extends Account{
     @Override
     public void withdraw(double amount) {
         if(amount>0){
-            if((amount+FEE)<=balance){
+            if((amount)<=balance){
                 System.out.printf("Amount %.2f withdrawn from Account%n",amount);
                 balance-=amount;
-                balance-=FEE;
-                System.out.printf("Fee %.2f Applied%n",FEE);
                 System.out.printf("Current Balance is: %.2f%n",balance);
             }
         }
