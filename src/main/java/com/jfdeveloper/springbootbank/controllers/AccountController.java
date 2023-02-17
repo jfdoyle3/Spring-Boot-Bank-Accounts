@@ -32,13 +32,13 @@ public class AccountController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Checking> checkingAccount(){
+    public ResponseEntity<Checking> checkingAccount(@RequestBody Checking account){
 
-       Account newChecking = new Checking("Jim","123456",2);
-       Account newSavings=new Savings("Jim","654321",1);
-       Checking checking= new Checking("cJim","234561",2);
-       accountRepository.save(newChecking);
-       accountRepository.save(newSavings);
+//       Account newChecking = new Checking("Jim","123456");
+//       Account newSavings=new Savings("Jim","654321");
+        Checking checking= new Checking(account.getName(),"11111");
+//      accountRepository.save(newChecking);
+//       accountRepository.save(newSavings);
        checkingRepository.save(checking);
        return new ResponseEntity<>(HttpStatus.CREATED);
 
