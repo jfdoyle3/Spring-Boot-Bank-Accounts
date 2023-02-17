@@ -7,12 +7,8 @@ import jakarta.persistence.MappedSuperclass;
 public class Checking extends Account{
 
 
-
-
-
     public Checking(String name, String  accountNumber) {
         super(name,accountNumber);
-
     }
 
     @Override

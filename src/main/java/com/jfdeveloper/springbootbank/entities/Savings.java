@@ -7,33 +7,12 @@ import jakarta.persistence.Entity;
 public class Savings extends Account {
 
 
-    private double interestRate;
-
-
-
-
-    public Savings(String name, String accountNumber,double interestRate) {
+    public Savings(String name, String accountNumber) {
         super(name, accountNumber);
-        this.interestRate=interestRate;
+
     }
 
-//    public double getInterestRate() {
-//        return interestRate;
-//    }
-//
-//    public void setInterestRate(double interestRate) {
-//        this.interestRate = interestRate;
-//    }
-//
-//    public double calcInterest(){
-//        return balance*interestRate;
-//    }
-//
-//    public void applyInterest(){
-//        double interest=calcInterest();
-//        System.out.printf("Interest amount %.2f added to balance%n",interest);
-//        deposit(interest);
-//    }
+
 
     @Override
     public void deposit(double amount) {
