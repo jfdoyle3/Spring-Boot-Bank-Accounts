@@ -1,13 +1,12 @@
 package com.jfdeveloper.springbootbank.entities;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.MappedSuperclass;
 
 @Entity
 public class Checking extends Account{
 
 
-    public Checking(String name, String  accountNumber) {
+    public Checking(String name, int accountNumber) {
         super(name,accountNumber);
     }
 

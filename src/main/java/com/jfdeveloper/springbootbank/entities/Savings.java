@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 public class Savings extends Account {
 
 
-    public Savings(String name, String accountNumber) {
+    public Savings(String name, int accountNumber) {
         super(name, accountNumber);
 
     }

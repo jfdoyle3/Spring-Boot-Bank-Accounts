@@ -3,21 +3,23 @@ package com.jfdeveloper.springbootbank.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
-@Entity
+
+@MappedSuperclass
 public abstract class Account {
 
     @Id @GeneratedValue
     private Long accountId;
     private String name;
 
-    private String accountNumber;
+    private int accountNumber;
     protected double balance;
 
     public Account() {
     }
 
-    public Account(String name, String accountNumber) {
+    public Account(String name, int accountNumber) {
         this.name=name;
         this.accountNumber = accountNumber;
         balance=0;
@@ -27,7 +29,7 @@ public abstract class Account {
         return name;
     }
 
-    public String getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
     public double getBalance() {
