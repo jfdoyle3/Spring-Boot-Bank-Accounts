@@ -1,8 +1,10 @@
 package com.jfdeveloper.springbootbank.controllers;
 
 import com.jfdeveloper.springbootbank.entities.Checking;
+import com.jfdeveloper.springbootbank.entities.Savings;
 import com.jfdeveloper.springbootbank.repositories.AccountRepository;
 import com.jfdeveloper.springbootbank.repositories.CheckingRepository;
+import com.jfdeveloper.springbootbank.repositories.SavingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +29,15 @@ public class AccountController {
     @Autowired
     private CheckingRepository checkingRepository;
 
+    @Autowired
+    private SavingsRepository savingsRepository;
+
     @GetMapping("/showAccounts")
     public @ResponseBody List<Checking> getAccount() {
         return checkingRepository.findAll();
     }
 
-    @PostMapping("/create")
+    @PostMapping("/createChecking")
     public ResponseEntity<Checking> checkingAccount(@RequestBody Checking account){
 
 
@@ -45,6 +50,22 @@ public class AccountController {
 //       accountRepository.save(newSavings);
        checkingRepository.save(checking);
        return new ResponseEntity<>(HttpStatus.CREATED);
+
+    }
+
+    @PostMapping("/createSavings")
+    public ResponseEntity<Savings> checkingAccount(@RequestBody Savings account){
+
+
+        int accountNumberChecking=Math.abs((1 + randNumber.nextInt(2)) * (int)Math.pow(10,9) + randNumber.nextInt((int)Math.pow(10,9)));
+        int accountNumberSavings=Math.abs(accountNumberChecking+((1 + randNumber.nextInt(2)) * (int)Math.pow(10,5) + randNumber.nextInt((int)Math.pow(10,5))));
+//       Account newChecking = new Checking("Jim","123456");
+//       Account newSavings=new Savings("Jim","654321");
+        Savings savings= new Savings(account.getName(),accountNumberSavings);
+//      accountRepository.save(newChecking);
+//       accountRepository.save(newSavings);
+        savingsRepository.save(savings);
+        return new ResponseEntity<>(HttpStatus.CREATED);
 
     }
 
