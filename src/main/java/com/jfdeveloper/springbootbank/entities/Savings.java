@@ -1,9 +1,11 @@
 package com.jfdeveloper.springbootbank.entities;
 
 import com.jfdeveloper.springbootbank.entities.Account;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
+@DiscriminatorValue(value = "savings")
 public class Savings extends Account {
 
 
