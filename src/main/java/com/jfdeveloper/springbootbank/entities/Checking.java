@@ -1,8 +1,10 @@
 package com.jfdeveloper.springbootbank.entities;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
+@DiscriminatorValue(value = "checking")
 public class Checking extends Account{
 
 

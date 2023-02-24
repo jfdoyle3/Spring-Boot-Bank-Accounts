@@ -32,7 +32,7 @@ public class AccountController {
     @Autowired
     private SavingsRepository savingsRepository;
 
-    @GetMapping("/showAccounts")
+    @GetMapping("/showChecking")
     public @ResponseBody List<Checking> getAccount() {
         return checkingRepository.findAll();
     }
