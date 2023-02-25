@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue(value = "savings")
 public class Savings extends Account {
 
+    public Savings() {
+    }
 
     public Savings(String name, int accountNumber) {
         super(name, accountNumber);

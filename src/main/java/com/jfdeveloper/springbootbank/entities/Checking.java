@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue(value = "checking")
 public class Checking extends Account{
 
+    public Checking() {
+    }
 
     public Checking(String name, int accountNumber) {
         super(name,accountNumber);

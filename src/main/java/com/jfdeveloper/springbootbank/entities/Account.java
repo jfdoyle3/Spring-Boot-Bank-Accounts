@@ -13,23 +13,24 @@ public abstract class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name =“id”, updatable = false, nullable = false)
+    @Column(name = "id", updatable = false, nullable = false)
     protected Long accountId;
     protected String name;
 
-    @ManyToMany
-    @JoinTable(name = “AccountName”, joinColumns = { @JoinColumn(name = “accountId”, referencedColumnName = “id”) }, inverseJoinColumns = { @JoinColumn(name = “authorId”, referencedColumnName = “id”) })
-    private Set checking = new HashSet();
-
-    @ManyToMany
-    @JoinTable(name = “AccountName”, joinColumns = { @JoinColumn(name = “accountId”, referencedColumnName = “id”) }, inverseJoinColumns = { @JoinColumn(name = “authorId”, referencedColumnName = “id”) })
-    private Set savings = new HashSet();
+//    @ManyToMany
+//    @JoinTable(name = "AccountName", joinColumns = { @JoinColumn(name = "accountId", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "authorId", referencedColumnName = "id") })
+//    private Set checking = new HashSet();
+//
+//    @ManyToMany
+//    @JoinTable(name = "AccountName", joinColumns = { @JoinColumn(name = "accountId", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name ="authorId",referencedColumnName = "id") })
+//    private Set savings = new HashSet();
     protected double balance;
 
     @Column
     @Temporal(TemporalType.DATE)
     protected Date openingDate;
 
+    private int accountNumber;
 
 
     public Account() {
