@@ -24,36 +24,65 @@ public abstract class Account {
 //    @ManyToMany
 //    @JoinTable(name = "AccountName", joinColumns = { @JoinColumn(name = "accountId", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name ="authorId",referencedColumnName = "id") })
 //    private Set savings = new HashSet();
-    protected double balance;
+    protected int balance;
 
     @Column
     @Temporal(TemporalType.DATE)
     protected Date openingDate;
 
-    private int accountNumber;
+    private long accountNumber;
 
 
     public Account() {
     }
 
-    public Account(String name, int accountNumber) {
+    public Account(String name, long accountNumber) {
         this.name=name;
         this.accountNumber = accountNumber;
         balance=0;
+    }
+
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAccountNumber() {
-        return accountNumber;
+    public void setName(String name) {
+        this.name = name;
     }
-    public double getBalance() {
+
+    public int getBalance() {
         return balance;
     }
 
-    public abstract void deposit(double amount);
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
 
-    public abstract void withdraw(double amount);
+    public Date getOpeningDate() {
+        return openingDate;
+    }
+
+    public void setOpeningDate(Date openingDate) {
+        this.openingDate = openingDate;
+    }
+
+    public long getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(long accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public abstract void deposit(int amount);
+
+    public abstract void withdraw(int amount);
 }

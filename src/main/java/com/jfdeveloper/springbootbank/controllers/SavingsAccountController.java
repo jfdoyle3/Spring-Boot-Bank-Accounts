@@ -1,5 +1,7 @@
 package com.jfdeveloper.springbootbank.controllers;
 
+import com.jfdeveloper.springbootbank.entities.Account;
+import com.jfdeveloper.springbootbank.entities.Checking;
 import com.jfdeveloper.springbootbank.entities.Savings;
 import com.jfdeveloper.springbootbank.repositories.AccountRepository;
 import com.jfdeveloper.springbootbank.repositories.SavingsRepository;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Random;
@@ -29,12 +32,19 @@ public class SavingsAccountController {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private SavingsRepository savingsRepository;
+    private SavingsRepository repository;
 
 
-    @GetMapping("/showAllAccounts")
-    public @ResponseBody List<Savings> getAccount() {
-        return savingsRepository.findAll();
+    @GetMapping("/all")
+    @ResponseBody
+    public  List<Savings> getAccount() {
+        return repository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Savings getOneAccount(@PathVariable Long id) {
+        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/create")
@@ -48,9 +58,20 @@ public class SavingsAccountController {
 
         Savings savings = new Savings(account.getName(), accountNumberSavings);
 
-        savingsRepository.save(savings);
+        repository.save(savings);
         return new ResponseEntity<>(HttpStatus.CREATED);
 
+    }
+    // TODO :  Deposit , Withdrawal methods.
+
+    @PutMapping("/{id}")
+    @ResponseBody
+    public Savings updateAccount(@PathVariable Long id, @RequestBody Savings updates) {
+        Savings account = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        if (updates.getName() != null) account.setName(updates.getName());
+
+        return repository.save(account);
     }
 
 
@@ -75,4 +96,11 @@ public class SavingsAccountController {
 //        repository.save(newRating);
 //        return new ResponseEntity<>(currency.get(), HttpStatus.CREATED);
 //    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> destroyAccount(@PathVariable Long id) {
+        repository.deleteById(id);
+        return new ResponseEntity<>("Deleted", HttpStatus.OK);
+    }
 }

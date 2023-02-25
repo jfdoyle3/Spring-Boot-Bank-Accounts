@@ -1,6 +1,7 @@
 package com.jfdeveloper.springbootbank.controllers;
 
 import com.jfdeveloper.springbootbank.entities.Checking;
+import com.jfdeveloper.springbootbank.entities.Savings;
 import com.jfdeveloper.springbootbank.repositories.AccountRepository;
 import com.jfdeveloper.springbootbank.repositories.CheckingRepository;
 
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -30,18 +33,21 @@ public class CheckingAccountController {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private CheckingRepository checkingRepository;
+    private CheckingRepository repository;
 
 
-    @GetMapping("/showAllAccounts")
-    public @ResponseBody List<Checking> getAllAccounts() {
-        return checkingRepository.findAll();
+    @GetMapping("/all")
+    @ResponseBody
+    public  List<Checking> getAllAccounts() {
+        return repository.findAll();
     }
 
-//    @GetMapping("/showCheckingAccount/{id}")
-//    public ResponseEntity<Checking> getAccountId(){
-//
-//    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Checking getOneAccount(@PathVariable Long id) {
+        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
 
     @PostMapping("/create")
     public ResponseEntity<Checking> checkingAccount(@RequestBody Checking account){
@@ -52,34 +58,24 @@ public class CheckingAccountController {
 
         Checking checking= new Checking(account.getName(),accountNumberChecking);
 
-        checkingRepository.save(checking);
+        repository.save(checking);
         return new ResponseEntity<>(HttpStatus.CREATED);
 
     }
 
+    @PutMapping("/{id}")
+    @ResponseBody
+    public Checking updateAccount(@PathVariable Long id, @RequestBody Checking updates) {
+       Checking account = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
+        if (updates.getName() != null) account.setName(updates.getName());
 
+        return repository.save(account);
+    }
 
-
-    // ex of Post need to create a Checking and Savings accounts
-//    @PostMapping("/rate/{trackerId}/{cId}")
-//    public ResponseEntity<CryptocurrencyInfo> rateById(@PathVariable Long trackerId,@PathVariable Long cId,
-//                                                       @RequestBody SetRating setRating) {
-//        Optional<CryptocurrencyInfo> currency = infoRepository.findById(cId);
-//        Optional<Tracker> tracker = trackerRepository.findById(trackerId);
-//
-//        if (currency.isEmpty() || tracker.isEmpty())
-//            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-//
-//        if (repository.existsByCurrency_id(cId)) {
-//            Rating updateRating=repository.findByCurrencyId(cId);
-//            updateRating.setRate(setRating.getRate());
-//            repository.save(updateRating);
-//            return new ResponseEntity<>(currency.get(), HttpStatus.CREATED);
-//        }
-//
-//        Rating newRating = new Rating(tracker.get(), currency.get(), setRating.getRate());
-//        repository.save(newRating);
-//        return new ResponseEntity<>(currency.get(), HttpStatus.CREATED);
-//    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> destroyAccount(@PathVariable Long id) {
+        repository.deleteById(id);
+        return new ResponseEntity<>("Deleted", HttpStatus.OK);
+    }
 }
