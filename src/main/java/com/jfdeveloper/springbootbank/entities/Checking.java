@@ -19,12 +19,7 @@ public class Checking extends Account{
 
 
     @Override
-    public void deposit(int amount) {
-
-    }
-
+    public void deposit(int amount){}
     @Override
-    public void withdraw(int amount) {
-
-    }
+    public void withdraw(int amount){}
 }

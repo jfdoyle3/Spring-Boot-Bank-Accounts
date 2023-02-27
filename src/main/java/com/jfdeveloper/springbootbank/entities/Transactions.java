@@ -13,6 +13,19 @@ public class Transactions extends Account {
     public Transactions() {
     }
 
+    public Transactions(String name, long accountNumber, String transactionType) {
+        super(name, accountNumber);
+        this.transactionType = transactionType;
+    }
+
+    public String getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
+    }
+
     @Override
     public void deposit(int amount) {
         if(amount>0){

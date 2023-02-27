@@ -3,6 +3,7 @@ package com.jfdeveloper.springbootbank.controllers;
 import com.jfdeveloper.springbootbank.entities.Savings;
 import com.jfdeveloper.springbootbank.entities.Transactions;
 import com.jfdeveloper.springbootbank.repositories.AccountRepository;
+import com.jfdeveloper.springbootbank.repositories.CheckingRepository;
 import com.jfdeveloper.springbootbank.repositories.TransactionsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class TransactionController {
     private AccountRepository accountRepository;
 
     @Autowired
+    private CheckingRepository checkingRepository;
+
+    @Autowired
     private TransactionsRepository repository;
 
     @GetMapping("/all")
@@ -25,4 +29,13 @@ public class TransactionController {
     public List<Transactions> getAccount() {
         return repository.findAll();
     }
+
+    @PostMapping("/deposit")
+    public void depositMoney(){
+        Transactions deposit=new Transactions("Jim",2045206039,"Deposit");
+
+
+
+    }
+
 }
