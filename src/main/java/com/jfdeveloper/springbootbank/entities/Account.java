@@ -7,8 +7,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@MappedSuperclass
+
+@Entity(name="account")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="account_type",
+        discriminatorType = DiscriminatorType.STRING)
 public abstract class Account {
 
     @Id

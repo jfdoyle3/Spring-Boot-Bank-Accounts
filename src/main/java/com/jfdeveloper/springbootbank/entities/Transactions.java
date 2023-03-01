@@ -3,7 +3,7 @@ package com.jfdeveloper.springbootbank.entities;
 import jakarta.persistence.*;
 
 @Entity
-@DiscriminatorValue(value = "transactions")
+@DiscriminatorValue("transactions")
 public class Transactions extends Account {
 
 

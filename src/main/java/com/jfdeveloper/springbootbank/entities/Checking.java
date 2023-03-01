@@ -4,7 +4,7 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
-@DiscriminatorValue(value = "checking")
+@DiscriminatorValue("checking")
 public class Checking extends Account{
 
     public Checking() {
