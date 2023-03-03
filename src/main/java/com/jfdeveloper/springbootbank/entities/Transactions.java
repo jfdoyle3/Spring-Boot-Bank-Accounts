@@ -9,12 +9,15 @@ public class Transactions extends Account {
 
     private String transactionType;
 
+    private int amount;
+
     public Transactions() {
     }
 
-    public Transactions(String name, long accountNumber, String transactionType) {
+    public Transactions(String name, long accountNumber, String transactionType, int amount) {
         super(name, accountNumber);
         this.transactionType = transactionType;
+        this.amount=amount;
     }
 
     public String getTransactionType() {

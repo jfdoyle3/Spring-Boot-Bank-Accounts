@@ -32,7 +32,7 @@ public class TransactionController {
 
     @PostMapping("/deposit")
     public void depositMoney(){
-        Transactions deposit=new Transactions("Jim",2045206039,"Deposit");
+        Transactions deposit=new Transactions("Jim",2045206039,"Deposit",100);
 
 
 
