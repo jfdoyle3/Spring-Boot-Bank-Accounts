@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/transactions/")
+@RequestMapping("api/transactions")
 public class TransactionController {
 
     @Autowired
@@ -32,10 +32,10 @@ public class TransactionController {
 
     @PostMapping("/deposit")
     public void depositMoney(){
-        Transactions deposit=new Transactions("Jim",2045206039,"Deposit",100);
+        Transactions transaction=new Transactions("Jim",1352196496,"Deposit");
+        transaction.deposit(100);
 
-
-
+        repository.save(transaction);
     }
 
 }
