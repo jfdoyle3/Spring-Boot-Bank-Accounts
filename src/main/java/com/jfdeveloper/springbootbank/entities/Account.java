@@ -10,8 +10,8 @@ import java.util.Set;
 
 @Entity(name="account")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name="account_type",
-//        discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name="account_type",
+        discriminatorType = DiscriminatorType.STRING)
 public abstract class Account {
 
     @Id
