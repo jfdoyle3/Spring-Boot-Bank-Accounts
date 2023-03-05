@@ -11,8 +11,8 @@ public class Savings extends Account {
     public Savings() {
     }
 
-    public Savings(String name, long accountNumber) {
-        super(name, accountNumber);
+    public Savings(String name, int balance,long accountNumber) {
+        super(name, balance,accountNumber);
 
     }
 

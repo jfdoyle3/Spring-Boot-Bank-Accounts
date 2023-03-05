@@ -14,8 +14,8 @@ public class Transaction extends Account {
     public Transaction() {
     }
 
-    public Transaction(String name, long accountNumber, String transactionType) {
-        super(name, accountNumber);
+    public Transaction(String name, long accountNumber,int balance, String transactionType) {
+        super(name,balance, accountNumber);
         this.transactionType = transactionType;
 
     }

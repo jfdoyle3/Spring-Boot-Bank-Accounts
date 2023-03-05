@@ -3,7 +3,7 @@ package com.jfdeveloper.springbootbank.controllers;
 import com.jfdeveloper.springbootbank.entities.Transaction;
 import com.jfdeveloper.springbootbank.repositories.AccountRepository;
 import com.jfdeveloper.springbootbank.repositories.CheckingRepository;
-import com.jfdeveloper.springbootbank.repositories.TransactionsRepository;
+import com.jfdeveloper.springbootbank.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/transactions")
+@RequestMapping("api/transaction")
 public class TransactionController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class TransactionController {
     private CheckingRepository checkingRepository;
 
     @Autowired
-    private TransactionsRepository repository;
+    private TransactionRepository repository;
 
     @GetMapping("/all")
     @ResponseBody

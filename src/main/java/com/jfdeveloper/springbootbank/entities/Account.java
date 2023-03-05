@@ -35,15 +35,16 @@ public abstract class Account {
 
     private long accountNumber;
 
-
     public Account() {
     }
 
-    public Account(String name, long accountNumber) {
-        this.name=name;
+    public Account(String name, int balance, long accountNumber) {
+        this.name = name;
+        this.balance = balance;
         this.accountNumber = accountNumber;
-        balance=0;
     }
+
+
 
     public Long getAccountId() {
         return accountId;

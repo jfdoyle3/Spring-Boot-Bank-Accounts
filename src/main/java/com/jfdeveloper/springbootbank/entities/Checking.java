@@ -11,8 +11,8 @@ public class Checking extends Account{
     public Checking() {
     }
 
-    public Checking(String name, long accountNumber) {
-        super(name,accountNumber);
+    public Checking(String name, int balance, long accountNumber) {
+        super(name,balance,accountNumber);
     }
 
 
