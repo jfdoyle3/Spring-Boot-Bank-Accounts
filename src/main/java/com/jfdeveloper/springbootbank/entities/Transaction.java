@@ -3,18 +3,18 @@ package com.jfdeveloper.springbootbank.entities;
 import jakarta.persistence.*;
 
 @Entity
-@DiscriminatorValue("transactions")
-public class Transactions extends Account {
+@DiscriminatorValue("transaction")
+public class Transaction extends Account {
 
 
     private String transactionType;
 
     private int amount;
 
-    public Transactions() {
+    public Transaction() {
     }
 
-    public Transactions(String name, long accountNumber, String transactionType) {
+    public Transaction(String name, long accountNumber, String transactionType) {
         super(name, accountNumber);
         this.transactionType = transactionType;
 
