@@ -46,7 +46,7 @@ public class AccountController {
  //       int accountNumberSavings=Math.abs(accountNumberChecking+((1 + randNumber.nextInt(2)) * (int)Math.pow(10,5) + randNumber.nextInt((int)Math.pow(10,5))));
 //       Account newChecking = new Checking("Jim","123456");
 //       Account newSavings=new Savings("Jim","654321");
-        Checking checking= new Checking(account.getName(),accountNumberChecking);
+        Checking checking= new Checking(account.getName(),account.getBalance(),accountNumberChecking);
 //      accountRepository.save(newChecking);
 //       accountRepository.save(newSavings);
        checkingRepository.save(checking);
@@ -62,7 +62,7 @@ public class AccountController {
         int accountNumberSavings=Math.abs(accountNumberChecking+((1 + randNumber.nextInt(2)) * (int)Math.pow(10,5) + randNumber.nextInt((int)Math.pow(10,5))));
 //       Account newChecking = new Checking("Jim","123456");
 //       Account newSavings=new Savings("Jim","654321");
-        Savings savings= new Savings(account.getName(),accountNumberSavings);
+        Savings savings= new Savings(account.getName(),account.getBalance(),accountNumberSavings);
 //      accountRepository.save(newChecking);
 //       accountRepository.save(newSavings);
         savingsRepository.save(savings);
