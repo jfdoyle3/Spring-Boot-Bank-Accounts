@@ -31,8 +31,8 @@ public class TransactionController {
 
     @PostMapping("/deposit")
     public void depositMoney(){
-        Transaction transaction=new Transaction("Jim",1352196496,0,"Deposit");
-        transaction.deposit(100);
+        Transaction transaction=new Transaction("Jim",1352196496,1000,"Deposit");
+        transaction.deposit(200);
 
         repository.save(transaction);
     }

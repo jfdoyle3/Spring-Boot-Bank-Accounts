@@ -56,7 +56,7 @@ public class SavingsAccountController {
         //
         //  int accountNumberSavings=Math.abs(accountNumberChecking+((1 + randNumber.nextInt(2)) * (int)Math.pow(10,5) + randNumber.nextInt((int)Math.pow(10,5))));
 
-        Savings savings = new Savings(account.getName(), accountNumberSavings);
+        Savings savings = new Savings(account.getName(),2000, accountNumberSavings);
 
         repository.save(savings);
         return new ResponseEntity<>(HttpStatus.CREATED);

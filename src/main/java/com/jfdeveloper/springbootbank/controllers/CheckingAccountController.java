@@ -56,7 +56,7 @@ public class CheckingAccountController {
         int accountNumberChecking=Math.abs((1 + randNumber.nextInt(2)) * (int)Math.pow(10,9) + randNumber.nextInt((int)Math.pow(10,9)));
         //       int accountNumberSavings=Math.abs(accountNumberChecking+((1 + randNumber.nextInt(2)) * (int)Math.pow(10,5) + randNumber.nextInt((int)Math.pow(10,5))));
 
-        Checking checking= new Checking(account.getName(),accountNumberChecking);
+        Checking checking= new Checking(account.getName(),1000,accountNumberChecking);
 
         repository.save(checking);
         return new ResponseEntity<>(HttpStatus.CREATED);
